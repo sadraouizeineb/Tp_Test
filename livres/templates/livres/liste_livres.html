@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Liste des livres{% endblock %}
+{% block content %}
+    <div class="book-detail">
+        <h2 class="book-header">Livres disponibles</h2>
+        <ul>
+            {% for livre in livres %}
+                <li>
+                    <a href="{% url 'detail_livre' livre.id %}" class="book-info">
+                        {{ livre.titre }}
+                    </a> 
+                    par 
+                    <span class="book-info">
+                        {{ livre.auteur }}
+                    </span>
+                    <a href="{% url 'update_livre' livre.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                    
+                    {% if livre.disponible %}
+                        <a href="{% url 'emprunter_livre' livre.id %}" class="btn btn-success btn-sm">Emprunter</a>
+                        <span class="status available">Disponible</span>
+                    {% else %}
+                        <span class="status not-available">Non disponible</span>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'ajouter_livre' %}" class="btn btn-primary">Ajouter un livre</a>
+        <a href="{% url 'livres_non_disponibles' %}" class="btn btn-danger">Livres non disponibles</a>
+    </div>
+{% endblock %}

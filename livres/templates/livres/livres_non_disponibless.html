@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Livres non disponibles</title>
+</head>
+<body>
+    <h1>Livres non disponibles</h1>
+    <ul>
+        {% for livre in livres %}
+            <li>{{ livre.titre }} - {{ livre.auteur }} ({{ livre.date_publication }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

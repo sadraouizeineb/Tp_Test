@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Album</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Album d'Images</h1>
+        <div class="gallery">
+            {% for i in res %}
+                <div class="image-item">
+                    <img src="{{ i.myimage.url }}" alt="Image {{ forloop.counter }}">
+                </div>
+            {% endfor %}
+        </div>
+        
+    </div>
+    
+</body>
+</html>

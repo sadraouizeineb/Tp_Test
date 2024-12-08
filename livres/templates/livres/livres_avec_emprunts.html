@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Livres avec emprunts</title>
+</head>
+<body>
+    <h1>Livres avec emprunts</h1>
+    <ul>
+        {% for livre in livres %}
+            <li>{{ livre.titre }} - {{ livre.nb_emprunts }} emprunts</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

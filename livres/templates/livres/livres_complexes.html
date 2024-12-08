@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Livres avec logique complexe</title>
+</head>
+<body>
+    <h1>Livres par auteur ou disponibles</h1>
+    <ul>
+        {% for livre in livres %}
+            <li>{{ livre.titre }} - {{ livre.auteur }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

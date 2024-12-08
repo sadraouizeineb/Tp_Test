@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparaison des livres</title>
+</head>
+<body>
+    <h1>Comparaison des livres</h1>
+    <ul>
+        {% for livre in livres %}
+            <li>{{ livre.titre }} - {{ livre.date_publication }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

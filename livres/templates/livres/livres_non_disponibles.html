@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Livres non disponibles{% endblock %}
+{% block content %}
+    <div class="book-detail">
+        <h2 class="book-header">Livres non disponibles</h2>
+        {% if livres %}
+            <ul>
+                {% for livre in livres %}
+                    <li class="book-info">
+                        <strong>{{ livre.titre }}</strong> par {{ livre.auteur }}
+                        <span class="text-muted">(Date de publication : {{ livre.date_publication }})</span>
+                        <a href="{% url 'update_livre' livre.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                        <span class="status not-available">Non disponible</span>
+                        
+                        <!-- Affichage uniquement du dernier emprunteur -->
+                        {% with dernier_emprunt=livre.emprunt_set.last %}
+                            {% if dernier_emprunt %}
+                                <p class="text-muted">
+                                    Dernier emprunteur : <strong>{{ dernier_emprunt.nom_emprunteur }}</strong>
+                                    (le {{ dernier_emprunt.date_emprunt|date:"d/m/Y" }})
+                                </p>
+                            
+                            {% endif %}
+                        {% endwith %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="book-info text-muted">Aucun livre non disponible pour le moment.</p>
+        {% endif %}
+    </div>
+{% endblock %}
